@@ -1,6 +1,6 @@
 # Charlie Qi Portfolio Website
 
-Personal one-page portfolio for AI, RAG, Python, data and software engineering roles.
+Personal one-page portfolio for graduate and junior software engineering, Python backend, data, automation and AI-adjacent roles.
 
 ## Tech Stack
 

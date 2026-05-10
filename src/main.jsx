@@ -58,12 +58,12 @@ const projects = [
 ];
 
 const skills = [
-  { label: "AI / RAG", value: "OpenAI embeddings, vector search, LangGraph, grounded answers, citations" },
-  { label: "Python Apps", value: "FastAPI, Streamlit, REST APIs, pytest, Docker Compose" },
+  { label: "Software / Backend", value: "Python, FastAPI, REST APIs, Streamlit, pytest, Docker Compose" },
   { label: "Data", value: "SQL, PostgreSQL, pgvector, pandas, NumPy, query history" },
+  { label: "AI / RAG", value: "OpenAI embeddings, vector search, LangGraph, grounded answers, citations" },
+  { label: "Automation", value: "VBA calculators, HTML forecasting tool, SAP/M3 exposure" },
   { label: "ML / NLP / CV", value: "PyTorch, TensorFlow/Keras, scikit-learn, Seq2Seq, CNNs" },
   { label: "Security", value: "RSA, AES, X.509, CSRs, CRLs, PKI concepts" },
-  { label: "Automation", value: "VBA calculators, HTML forecasting tool, SAP/M3 exposure" },
 ];
 
 const experience = [
@@ -134,19 +134,19 @@ function App() {
               <img src={profilePhotoUrl} alt="Charlie Qi" />
               <div>
                 <strong>Charlie Qi</strong>
-                <span>Final-year MCS student | AI specialisation</span>
+                <span>Software, data and AI portfolio</span>
               </div>
             </div>
-            <p className="eyebrow">AI / RAG / Python / Data / Software</p>
+            <p className="eyebrow">Software / Python / Data / AI / Automation</p>
             <h1>
-              <span>AI/software candidate</span>
-              <span>with practical technical</span>
-              <span>delivery experience.</span>
+              <span>Software engineering</span>
+              <span>candidate with AI, data</span>
+              <span>and automation projects.</span>
             </h1>
             <p className="lead">
               Final-year Master of Computer Science student specialising in Artificial Intelligence,
-              building public projects across RAG, machine learning, NLP, computer vision,
-              data systems and applied cybersecurity.
+              targeting graduate and junior software engineering, Python backend, data,
+              automation and AI-adjacent roles.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer">
@@ -167,11 +167,11 @@ function App() {
       <section className="section intro">
         <div className="section-heading">
           <Sparkles size={22} />
-          <h2>Career Transition</h2>
+          <h2>Software Engineering Transition</h2>
         </div>
         <p>
           I am transitioning from biotech product R&D, infant formula manufacturing and
-          healthcare nutrition into AI/software engineering. My previous roles were not IT
+          healthcare nutrition into software, data and AI-adjacent engineering. My previous roles were not IT
           roles, but they built relevant habits: documentation, validation, data handling,
           stakeholder support, business systems exposure, process improvement and practical
           automation. My computer science study and public GitHub projects show the technical
@@ -259,7 +259,7 @@ function App() {
 
       <section className="section contact" id="contact">
         <h2>Contact</h2>
-        <p>Open to graduate and junior roles across AI engineering, RAG/LLM engineering, data, software and AI-adjacent cybersecurity.</p>
+        <p>Open to graduate and junior roles across software engineering, Python backend, data, automation, AI/RAG applications and AI-adjacent cybersecurity.</p>
         <div className="hero-actions">
           <a className="button primary" href="mailto:charlieqi2017@gmail.com">
             <Mail size={18} /> charlieqi2017@gmail.com
