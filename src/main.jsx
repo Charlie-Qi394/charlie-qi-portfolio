@@ -17,6 +17,7 @@ import {
 import "./styles.css";
 
 const resumeUrl = `${import.meta.env.BASE_URL}charlie-qi-resume.pdf`;
+const profilePhotoUrl = `${import.meta.env.BASE_URL}profile-photo.jpeg`;
 
 const projects = [
   {
@@ -129,6 +130,13 @@ function App() {
 
         <div className="hero-grid">
           <div className="hero-copy">
+            <div className="profile-strip">
+              <img src={profilePhotoUrl} alt="Charlie Qi" />
+              <div>
+                <strong>Charlie Qi</strong>
+                <span>Final-year MCS student | AI specialisation</span>
+              </div>
+            </div>
             <p className="eyebrow">AI / RAG / Python / Data / Software</p>
             <h1>
               <span>AI/software candidate</span>

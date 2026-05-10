@@ -83,6 +83,42 @@ main {
   min-width: 0;
 }
 
+.profile-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  padding: 8px 14px 8px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: 0 12px 34px rgba(23, 32, 42, 0.08);
+}
+
+.profile-strip img {
+  width: 66px;
+  height: 66px;
+  border-radius: 8px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.profile-strip strong,
+.profile-strip span {
+  display: block;
+}
+
+.profile-strip strong {
+  color: var(--blue-dark);
+  font-size: 18px;
+}
+
+.profile-strip span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .eyebrow,
 .project-tag {
   margin: 0 0 12px;
@@ -439,6 +475,11 @@ h1 span {
   }
 
   .button {
+    width: 100%;
+    max-width: 346px;
+  }
+
+  .profile-strip {
     width: 100%;
     max-width: 346px;
   }
