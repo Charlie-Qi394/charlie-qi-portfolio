@@ -1,6 +1,8 @@
 # Charlie Qi Portfolio Website
 
-Personal one-page portfolio for graduate and junior software engineering, Python backend, data, automation and AI-adjacent roles.
+Personal one-page portfolio for software engineering, Python backend, data,
+optimisation, automation and AI-adjacent roles. The integrated nutrition
+formulation optimisation platform is presented as the flagship project.
 
 ## Tech Stack
 
