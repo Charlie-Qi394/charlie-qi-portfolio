@@ -21,6 +21,21 @@ const profilePhotoUrl = `${import.meta.env.BASE_URL}profile-photo.jpeg`;
 
 const projects = [
   {
+    title: "Integrated Nutrition Formulation Optimisation Platform",
+    tag: "Flagship build · React, FastAPI, PostgreSQL, SciPy/HiGHS",
+    href: "https://github.com/Charlie-Qi394/integrated-formulation-optimisation-tool",
+    summary:
+      "Production-style platform for reviewed Excel/CSV/PDF nutrient ingestion, constrained bulk formulation optimisation, natural micronutrient mass balance, base-powder premix design and supplier-proposal risk assessment.",
+    featured: true,
+  },
+  {
+    title: "CareOps AI — MCP-Powered Operations Assistant",
+    tag: "TypeScript, React, PostgreSQL, Prisma, MCP",
+    href: "https://github.com/Charlie-Qi394/careops-ai",
+    summary:
+      "Production-style aged-care operations platform with secure MCP tools, role-based access, confirmation-gated writes, schema validation and structured audit logging.",
+  },
+  {
     title: "AI Regulatory Knowledge Assistant",
     tag: "RAG, FastAPI, PostgreSQL/pgvector",
     href: "https://github.com/Charlie-Qi394/ai-regulatory-knowledge-assistant",
@@ -58,10 +73,10 @@ const projects = [
 ];
 
 const skills = [
-  { label: "Software / Backend", value: "Python, FastAPI, REST APIs, Streamlit, pytest, Docker Compose" },
-  { label: "Data", value: "SQL, PostgreSQL, pgvector, pandas, NumPy, query history" },
-  { label: "AI / RAG", value: "OpenAI embeddings, vector search, LangGraph, grounded answers, citations" },
-  { label: "Automation", value: "VBA calculators, HTML forecasting tool, SAP/M3 exposure" },
+  { label: "Software / Backend", value: "Python, TypeScript, FastAPI, React, REST APIs, Celery, Redis, pytest/Vitest" },
+  { label: "Data / Optimisation", value: "PostgreSQL, SQLAlchemy, SciPy/HiGHS, SQL, pandas, NumPy, mass-balance modelling" },
+  { label: "AI / Extraction / RAG", value: "Gemini structured extraction, MCP, vector search, LangGraph, grounded answers, citations" },
+  { label: "DevOps / Automation", value: "Docker Compose, Caddy, GitHub Actions, audit logging, VBA tools, SAP/M3 exposure" },
   { label: "ML / NLP / CV", value: "PyTorch, TensorFlow/Keras, scikit-learn, Seq2Seq, CNNs" },
   { label: "Security", value: "RSA, AES, X.509, CSRs, CRLs, PKI concepts" },
 ];
@@ -75,7 +90,7 @@ const experience = [
 
 function ProjectPreview() {
   return (
-    <div className="preview-panel" aria-label="Portfolio project preview">
+    <div className="preview-panel" aria-label="Formulation optimisation project preview">
       <div className="preview-header">
         <span />
         <span />
@@ -83,32 +98,40 @@ function ProjectPreview() {
       </div>
       <div className="preview-body">
         <div className="query-card">
-          <p className="preview-label">RAG workflow</p>
-          <p>question -&gt; retrieve context -&gt; check sufficiency -&gt; answer with citations</p>
+          <p className="preview-label">Flagship workflow</p>
+          <p>review nutrient evidence -&gt; optimise bulk BOM -&gt; design premix -&gt; assess specification risk</p>
         </div>
         <div className="metric-grid">
           <div>
-            <strong>FastAPI</strong>
-            <span>Backend</span>
+            <strong>SciPy / HiGHS</strong>
+            <span>Optimisation</span>
           </div>
           <div>
-            <strong>pgvector</strong>
-            <span>Retrieval</span>
+            <strong>React + FastAPI</strong>
+            <span>Full stack</span>
           </div>
           <div>
-            <strong>LangGraph</strong>
-            <span>Workflow</span>
+            <strong>PostgreSQL</strong>
+            <span>Versioned evidence</span>
           </div>
           <div>
-            <strong>Docker</strong>
-            <span>Setup</span>
+            <strong>Gemini</strong>
+            <span>Structured extraction</span>
           </div>
         </div>
         <div className="source-list">
-          <span>Source 1</span>
-          <span>Source 2</span>
-          <span>Evaluation</span>
+          <span>Hard constraints</span>
+          <span>Premix targets</span>
+          <span>Range-risk bands</span>
         </div>
+        <a
+          className="preview-link"
+          href="https://github.com/Charlie-Qi394/integrated-formulation-optimisation-tool"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Explore the formulation platform <ArrowUpRight size={16} />
+        </a>
       </div>
     </div>
   );
@@ -134,23 +157,31 @@ function App() {
               <img src={profilePhotoUrl} alt="Charlie Qi" />
               <div>
                 <strong>Charlie Qi</strong>
-                <span>Software, data and AI portfolio</span>
+                <span>Software engineer · AI and optimisation</span>
               </div>
             </div>
-            <p className="eyebrow">Software / Python / Data / AI / Automation</p>
+            <p className="eyebrow">Featured build · Nutrition formulation optimisation</p>
             <h1>
-              <span>Software engineering</span>
-              <span>candidate with AI, data</span>
-              <span>and automation projects.</span>
+              <span>Domain expertise,</span>
+              <span>translated into</span>
+              <span>working software.</span>
             </h1>
             <p className="lead">
-              Final-year Master of Computer Science student specialising in Artificial Intelligence,
-              targeting graduate and junior software engineering, Python backend, data,
-              automation and AI-adjacent roles.
+              Master of Computer Science graduate specialising in AI, with 10 years in
+              biotech and nutrition R&amp;D. I build auditable full-stack tools for
+              optimisation, document extraction, data and operational workflows.
             </p>
             <div className="hero-actions">
-              <a className="button primary" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer">
-                <GitBranch size={18} /> GitHub
+              <a
+                className="button primary"
+                href="https://github.com/Charlie-Qi394/integrated-formulation-optimisation-tool"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <ArrowUpRight size={18} /> View flagship project
+              </a>
+              <a className="button" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer">
+                <GitBranch size={18} /> GitHub profile
               </a>
               <a className="button" href={resumeUrl} target="_blank" rel="noreferrer">
                 <FileDown size={18} /> Resume
@@ -167,15 +198,14 @@ function App() {
       <section className="section intro">
         <div className="section-heading">
           <Sparkles size={22} />
-          <h2>Software Engineering Transition</h2>
+          <h2>Software Engineering Through Domain Problems</h2>
         </div>
         <p>
-          I am transitioning from biotech product R&D, infant formula manufacturing and
-          healthcare nutrition into software, data and AI-adjacent engineering. My previous roles were not IT
-          roles, but they built relevant habits: documentation, validation, data handling,
-          stakeholder support, business systems exposure, process improvement and practical
-          automation. My computer science study and public GitHub projects show the technical
-          direction of that transition.
+          My flagship formulation platform demonstrates how I approach software engineering:
+          understand a complex real-world workflow, make assumptions and evidence traceable,
+          encode hard constraints, automate repeatable decisions and present the result clearly.
+          My broader projects cover MCP-powered operations, RAG, machine learning, security and
+          full-stack product development.
         </p>
       </section>
 
@@ -186,7 +216,10 @@ function App() {
         </div>
         <div className="project-grid">
           {projects.map((project) => (
-            <article className="project-card" key={project.title}>
+            <article
+              className={`project-card${project.featured ? " project-card--featured" : ""}`}
+              key={project.title}
+            >
               <div>
                 <p className="project-tag">{project.tag}</p>
                 <h3>{project.title}</h3>
@@ -241,7 +274,7 @@ function App() {
         <div className="credential">
           <GraduationCap size={22} />
           <h3>Education</h3>
-          <p><strong>Master of Computer Science, AI specialisation</strong><br />Monash University | Expected Jun 2026</p>
+          <p><strong>Master of Computer Science, AI specialisation</strong><br />Monash University | Completed Jun 2026</p>
           <p><strong>Master of Science, Nutrition and Dietetics</strong><br />The University of Sydney | 2016</p>
           <p><strong>Bachelor of Science, Food Science and Nutrition</strong><br />The University of Auckland | 2014</p>
         </div>
