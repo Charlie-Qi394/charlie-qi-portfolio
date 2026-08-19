@@ -1,8 +1,10 @@
 # Charlie Qi Portfolio Website
 
 Personal one-page portfolio for software engineering, Python backend, data,
-optimisation, automation and AI-adjacent roles. The integrated nutrition
-formulation optimisation platform is presented as the flagship project.
+optimisation, automation and applied AI roles. The integrated nutrition
+formulation optimisation platform is presented as the flagship project, with
+additional evidence across RAG, machine learning, deep-learning computer vision,
+NLP and applied security.
 
 ## Tech Stack
 

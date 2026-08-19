@@ -58,10 +58,10 @@ const projects = [
   },
   {
     title: "Computer Vision Classification and Segmentation",
-    tag: "CV, TensorFlow/Keras",
+    tag: "Three applied CV projects · TensorFlow/Keras",
     href: "https://github.com/Charlie-Qi394/computer-vision-cnn-segmentation",
     summary:
-      "Portfolio covering Harris/Canny image processing, CIFAR-100 CNN classification and Pascal VOC segmentation model design.",
+      "Built Harris/Canny algorithms, compared 12 CNN classification variants and designed semantic-segmentation models with FCN, U-Net, FPN, ASPP and attention gates; improved validation mIoU from 0.5332 to 0.6849.",
   },
   {
     title: "AI Graph Search Algorithms",
@@ -77,7 +77,7 @@ const skills = [
   { label: "Data / Optimisation", value: "PostgreSQL, SQLAlchemy, SciPy/HiGHS, SQL, pandas, NumPy, mass-balance modelling" },
   { label: "AI / Extraction / RAG", value: "Gemini structured extraction, MCP, vector search, LangGraph, grounded answers, citations" },
   { label: "DevOps / Automation", value: "Docker Compose, Caddy, GitHub Actions, audit logging, VBA tools, SAP/M3 exposure" },
-  { label: "ML / NLP / CV", value: "PyTorch, TensorFlow/Keras, scikit-learn, Seq2Seq, CNNs" },
+  { label: "ML / NLP / CV", value: "PyTorch, TensorFlow/Keras, scikit-learn, model evaluation, CNNs, U-Net/FPN, semantic segmentation, attention" },
   { label: "Security", value: "RSA, AES, X.509, CSRs, CRLs, PKI concepts" },
 ];
 
@@ -168,8 +168,9 @@ function App() {
             </h1>
             <p className="lead">
               Master of Computer Science graduate specialising in AI, with 10 years in
-              biotech and nutrition R&amp;D. I build auditable full-stack tools for
-              optimisation, document extraction, data and operational workflows.
+              biotech and nutrition R&amp;D. I build auditable full-stack tools and applied
+              AI systems for optimisation, document extraction, data, computer vision and
+              operational workflows.
             </p>
             <div className="hero-actions">
               <a
@@ -204,8 +205,8 @@ function App() {
           My flagship formulation platform demonstrates how I approach software engineering:
           understand a complex real-world workflow, make assumptions and evidence traceable,
           encode hard constraints, automate repeatable decisions and present the result clearly.
-          My broader projects cover MCP-powered operations, RAG, machine learning, security and
-          full-stack product development.
+          My broader projects cover MCP-powered operations, RAG, deep-learning computer vision,
+          machine learning, security and full-stack product development.
         </p>
       </section>
 
@@ -254,6 +255,8 @@ function App() {
           <p>
             First in class in Machine Learning, Image and Video Processing, and Applied
             Practice 1, with a High Distinction average in the Monash MCS AI specialisation.
+            Computer-vision work includes CNN classification and semantic-segmentation model
+            design, training and quantitative evaluation.
           </p>
         </aside>
       </section>
@@ -292,7 +295,7 @@ function App() {
 
       <section className="section contact" id="contact">
         <h2>Contact</h2>
-        <p>Open to graduate and junior roles across software engineering, Python backend, data, automation, AI/RAG applications and AI-adjacent cybersecurity.</p>
+        <p>Open to graduate and junior roles across software engineering, Python backend, data, machine learning, applied AI/RAG, computer vision and AI-adjacent cybersecurity.</p>
         <div className="hero-actions">
           <a className="button primary" href="mailto:charlieqi2017@gmail.com">
             <Mail size={18} /> charlieqi2017@gmail.com
