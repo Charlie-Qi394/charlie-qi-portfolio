@@ -43,7 +43,7 @@ const projects = [
     title: "Integrated Nutrition Formulation Optimisation Platform",
     filter: "Product software",
     label: "Domain software",
-    summary: "A full-stack formulation workspace that connects ingredient evidence, optimisation and reviewable product decisions.",
+    summary: "A full-stack formulation workspace for reviewed Excel/CSV/PDF nutrient ingestion, constrained bulk formulation optimisation, premix design and reviewable product decisions.",
     stack: "React · TypeScript · FastAPI · PostgreSQL · SciPy/HiGHS · Gemini",
     build: "I modelled ingredient and specification versions, added evidence ingestion and formulator review, then connected linear optimisation, mass-balance modelling and deterministic risk bands.",
     proof: "This is the clearest example of turning a real biotech R&D workflow into software with data models, calculations, validation and auditability.",
@@ -133,8 +133,8 @@ const capabilities = [
   { icon: <Code2 size={20} />, label: "Software engineering", items: ["Python", "TypeScript", "React", "FastAPI", "Node.js", "REST APIs", "pytest/Vitest"] },
   { icon: <Database size={20} />, label: "Data systems", items: ["PostgreSQL", "pgvector", "SQLAlchemy", "Prisma", "SQLite", "pandas", "NumPy"] },
   { icon: <Bot size={20} />, label: "AI applications", items: ["RAG", "LangGraph", "MCP tools", "OpenAI embeddings", "Gemini extraction", "citations"] },
-  { icon: <Workflow size={20} />, label: "Automation", items: ["Docker Compose", "GitHub Actions", "audit logging", "VBA tools", "SAP/M3 exposure"] },
-  { icon: <BrainCircuit size={20} />, label: "ML / NLP / CV", items: ["PyTorch", "TensorFlow/Keras", "scikit-learn", "Seq2Seq", "CNNs", "model evaluation"] },
+  { icon: <Workflow size={20} />, label: "Automation", items: ["Docker Compose", "GitHub Actions", "Celery", "Redis", "audit logging", "VBA tools", "SAP/M3 exposure"] },
+  { icon: <BrainCircuit size={20} />, label: "ML / NLP / CV", items: ["PyTorch", "TensorFlow/Keras", "scikit-learn", "Seq2Seq", "CNNs", "U-Net/FPN", "model evaluation"] },
   { icon: <ShieldCheck size={20} />, label: "Security concepts", items: ["X.509", "RSA", "AES", "CSRs", "CRLs", "certificate validation"] },
 ];
 
@@ -613,7 +613,7 @@ function App() {
             </div>
             <p className="eyebrow">Portfolio / 2026 / Melbourne, Australia</p>
             <h1>Software that makes complex work easier to reason about.</h1>
-            <p className="lead">Master of Computer Science graduate specialising in AI. I build practical systems across agent tooling, RAG, optimisation, APIs, data models and reviewable workflows.</p>
+            <p className="lead">Master of Computer Science graduate specialising in AI, with 10 years in biotech and nutrition R&amp;D. I build auditable full-stack tools and applied AI systems across optimisation, document extraction, data, computer vision and operational workflows.</p>
             <div className="hero-actions">
               <a className="button primary" href="#work"><TerminalSquare size={17} /> Explore the work <ArrowRight size={16} /></a>
               <a className="button" href={resumeUrl} target="_blank" rel="noreferrer"><FileDown size={17} /> Resume</a>
