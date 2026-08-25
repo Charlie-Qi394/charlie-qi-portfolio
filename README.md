@@ -6,21 +6,20 @@ Personal portfolio for software engineering, AI software engineering, Python bac
 
 - React
 - Vite
+- Three.js
 - CSS
 - lucide-react
+- Optimised JPEG page assets from the supplied portfolio deck
 
 ## Portfolio Experience
 
-- Interactive Three.js systems lab with clickable portfolio stations and keyboard navigation.
-- Scroll progress, section navigation and reveal transitions for a guided walkthrough.
-- Visual portfolio route linking the main story into direct sections.
-- Interactive project explorer with category filters and expandable evidence.
-- Project mission rooms with selectable system steps, engineering decisions and trade-offs.
-- Clickable system architecture map showing inputs, data, AI, tools and review boundaries.
-- Interactive systems playground comparing RAG, agent tooling and deterministic optimisation workflows.
-- Skill evidence tree and selectable biotech-to-AI transition timeline.
-- Recruiter-facing proof points connecting software projects with biotech product R&D experience.
-- Responsive layout for desktop and mobile screens.
+- A normal recruiter-facing website with sticky navigation and sections for Home, Projects, Architecture, Experience and Contact.
+- The supplied chapter wording, diagrams, typography, color system and graphics are preserved as visual case-study exhibits.
+- Full-viewport interactive 3D opening scene with clickable stations, animated depth, keyboard movement and project links.
+- A normal recruiter-facing website follows the 3D entry point, with sticky navigation and sections for Home, Projects, Architecture, Experience and Contact.
+- Scroll-triggered chapter reveals, hover depth, pointer parallax and reduced-motion support.
+- An interactive contact section with email, copy-email, GitHub and resume-on-request states.
+- Responsive layouts for desktop and mobile screens.
 
 ## Run Locally
 
@@ -39,6 +38,8 @@ npm run build
 
 ## Notes
 
-The resume PDF is stored in `public/charlie-qi-resume.pdf` for the resume button.
+The website does not publish a resume download. Resume available on request.
+
+The source chapter artwork is stored in `public/reference-deck/` as twelve optimised page images so the website remains visually faithful to the supplied PDF while presenting the material in normal website sections.
 
 The site is configured for GitHub Pages at `/charlie-qi-portfolio/` through `vite.config.js`.

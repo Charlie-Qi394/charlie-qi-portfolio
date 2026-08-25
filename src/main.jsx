@@ -15,7 +15,6 @@ import {
   Copy,
   Database,
   ExternalLink,
-  FileDown,
   Filter,
   GitBranch,
   GraduationCap,
@@ -32,8 +31,8 @@ import {
 } from "lucide-react";
 import SystemsLab from "./SystemsLab";
 import "./styles.css";
+import ReferenceDeck from "./ReferenceDeck";
 
-const resumeUrl = `${import.meta.env.BASE_URL}charlie-qi-resume.pdf`;
 const profilePhotoUrl = `${import.meta.env.BASE_URL}profile-photo.jpeg`;
 
 const filters = ["All", "AI systems", "Product software", "ML / CV", "Foundations"];
@@ -146,11 +145,11 @@ const architectureNodes = [
   { id: "review", label: "Review", icon: <CheckCircle2 size={18} />, detail: "Return citations, risk bands, logs and approval states so a person can understand the result.", output: "Auditable decision" },
 ];
 
-const proofPoints = [
-  "I can model data and build APIs.",
-  "I can connect AI to controlled tools.",
-  "I can make outputs reviewable and auditable.",
-  "I can measure model and workflow behaviour.",
+const proofQuests = [
+  { id: "model", label: "Model data and build APIs", detail: "Structure the state before adding intelligence.", reward: "FOUNDATION" },
+  { id: "tools", label: "Connect AI to controlled tools", detail: "Make intelligence useful without giving it unrestricted authority.", reward: "CONTROL" },
+  { id: "review", label: "Make outputs reviewable and auditable", detail: "Leave evidence, citations, logs and approval states behind.", reward: "EVIDENCE" },
+  { id: "measure", label: "Measure model and workflow behaviour", detail: "Use tests and evaluation to decide what to improve next.", reward: "SIGNAL" },
 ];
 
 const missionData = {
@@ -228,6 +227,12 @@ const journeyNodes = [
   { id: "context", number: "05", label: "Domain bridge", caption: "Why it matters", tone: "orange" },
 ];
 
+const briefObjectives = [
+  { id: "state", kicker: "OBJECTIVE 01", label: "Structure the state", detail: "Turn messy files, rules and requests into explicit data models, versions and validation points.", signal: "Data models · schemas · validation", tone: "purple" },
+  { id: "action", kicker: "OBJECTIVE 02", label: "Constrain the action", detail: "Use deterministic code, narrow tools and confirmation gates wherever an AI suggestion could change a real workflow.", signal: "APIs · tools · permissions", tone: "teal" },
+  { id: "evidence", kicker: "OBJECTIVE 03", label: "Expose the evidence", detail: "Make the result inspectable through citations, risk bands, logs, tests and clear human review points.", signal: "RAG · auditability · evaluation", tone: "gold" },
+];
+
 const skillBranches = [
   { id: "software", label: "Software engineering", level: "Portfolio + coursework", tone: "blue", skills: ["Python", "FastAPI", "React", "Testing"], evidence: "Built APIs, user workflows, CLI tools and tests across public projects." },
   { id: "ai", label: "AI applications", level: "Portfolio projects", tone: "teal", skills: ["RAG", "LangGraph", "MCP", "Embeddings"], evidence: "Implemented grounded retrieval, workflow orchestration and controlled tool use." },
@@ -245,7 +250,12 @@ const transitionNodes = [
 
 function JourneyMap() {
   const [activeId, setActiveId] = useState("work");
+  const [visited, setVisited] = useState(() => new Set(["work"]));
   const active = journeyNodes.find((node) => node.id === activeId) ?? journeyNodes[1];
+  const enterNode = (nodeId) => {
+    setActiveId(nodeId);
+    setVisited((current) => new Set([...current, nodeId]));
+  };
 
   return (
     <section className="journey-section" id="journey">
@@ -254,14 +264,39 @@ function JourneyMap() {
         <div className="journey-map" aria-label="Interactive portfolio map">
           <div className="journey-line" aria-hidden="true" />
           {journeyNodes.map((node) => (
-            <a className={`journey-node ${node.tone} ${active.id === node.id ? "active" : ""}`} href={`#${node.id}`} key={node.id} onMouseEnter={() => setActiveId(node.id)} onFocus={() => setActiveId(node.id)} onClick={() => setActiveId(node.id)}>
-              <span className="journey-number">{node.number}</span><strong>{node.label}</strong><small>{node.caption}</small>
+            <a className={`journey-node ${node.tone} ${active.id === node.id ? "active" : ""} ${visited.has(node.id) ? "visited" : ""}`} href={`#${node.id}`} key={node.id} onMouseEnter={() => enterNode(node.id)} onFocus={() => enterNode(node.id)} onClick={() => enterNode(node.id)}>
+              <span className="journey-number">{node.number}</span><strong>{node.label}</strong><small>{visited.has(node.id) ? "Visited / " : "Open / "}{node.caption}</small>
             </a>
           ))}
         </div>
-        <div className="journey-readout" aria-live="polite"><span>Selected station</span><strong>{active.label}</strong><p>{active.caption}. Follow the highlighted route or jump directly into this section.</p><a href={`#${active.id}`}>Enter station <ArrowRight size={15} /></a></div>
+        <div className="journey-readout" aria-live="polite"><span>Selected station / {String(visited.size).padStart(2, "0")} of 05 visited</span><strong>{active.label}</strong><p>{active.caption}. Follow the highlighted route or jump directly into this section.</p><a href={`#${active.id}`} onClick={() => enterNode(active.id)}>Enter station <ArrowRight size={15} /></a></div>
       </div>
     </section>
+  );
+}
+
+function MissionBrief() {
+  const [activeId, setActiveId] = useState("state");
+  const active = briefObjectives.find((objective) => objective.id === activeId) ?? briefObjectives[0];
+
+  return (
+    <div className="brief-board">
+      <div className="brief-objectives" role="tablist" aria-label="Portfolio design objectives">
+        {briefObjectives.map((objective, index) => (
+          <button className={`brief-objective ${objective.tone} ${active.id === objective.id ? "active" : ""}`} type="button" role="tab" aria-selected={active.id === objective.id} key={objective.id} onClick={() => setActiveId(objective.id)}>
+            <span className="brief-objective-number">0{index + 1}</span>
+            <span className="brief-objective-copy"><small>{objective.kicker}</small><strong>{objective.label}</strong></span>
+            {active.id === objective.id && <Check size={17} aria-hidden="true" />}
+          </button>
+        ))}
+      </div>
+      <div className="brief-inspector" aria-live="polite">
+        <div className="brief-inspector-kicker"><ClipboardList size={15} /> Mission brief / selected objective</div>
+        <h3>{active.label}</h3>
+        <p>{active.detail}</p>
+        <div className="brief-signal"><span>Signal unlocked</span><strong>{active.signal}</strong></div>
+      </div>
+    </div>
   );
 }
 
@@ -329,6 +364,36 @@ function TransitionTimeline() {
         {transitionNodes.map((node) => <button className={active.id === node.id ? "active" : ""} type="button" role="tab" aria-selected={active.id === node.id} key={node.id} onClick={() => setActiveId(node.id)}><span>{node.period}</span><i /><strong>{node.title}</strong></button>)}
       </div>
       <div className="transition-readout" aria-live="polite"><span>Transferable signal / {active.period}</span><h3>{active.title}</h3><p>{active.detail}</p><div className="transition-bridge"><strong>Bridge to software</strong><p>{active.bridge}</p></div><div className="transition-tags">{active.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div>
+    </div>
+  );
+}
+
+function QuestLog() {
+  const [completed, setCompleted] = useState(() => new Set());
+  const completion = Math.round((completed.size / proofQuests.length) * 100);
+  const toggleQuest = (questId) => {
+    setCompleted((current) => {
+      const next = new Set(current);
+      if (next.has(questId)) next.delete(questId);
+      else next.add(questId);
+      return next;
+    });
+  };
+
+  return (
+    <div className="quest-board">
+      <div className="quest-header"><div><span>QUEST LOG / PRACTICAL SIGNAL</span><h3>Transferable strengths</h3></div><strong>{String(completed.size).padStart(2, "0")} / {proofQuests.length} complete</strong></div>
+      <div className="quest-progress" aria-label={`${completion}% of transferable strengths selected`}><span style={{ width: `${completion}%` }} /></div>
+      <div className="quest-list">
+        {proofQuests.map((quest, index) => {
+          const isComplete = completed.has(quest.id);
+          return <button className={`quest-item ${isComplete ? "complete" : ""}`} type="button" aria-pressed={isComplete} key={quest.id} onClick={() => toggleQuest(quest.id)}>
+            <span className="quest-number">0{index + 1}</span>
+            <span className="quest-copy"><strong>{quest.label}</strong><small>{quest.detail}</small></span>
+            <span className="quest-reward">{isComplete ? "UNLOCKED" : quest.reward}</span>
+          </button>;
+        })}
+      </div>
     </div>
   );
 }
@@ -558,9 +623,14 @@ function FlowNavigator() {
     };
   }, []);
 
+  const activeIndex = Math.max(flowItems.findIndex((item) => item.id === activeId), 0);
+  const activeItem = flowItems[activeIndex] ?? flowItems[0];
+  const runProgress = ((activeIndex + 1) / flowItems.length) * 100;
+
   return (
     <>
       <div className="scroll-progress" aria-hidden="true"><span style={{ width: `${progress * 100}%` }} /></div>
+      <div className="flow-hud" aria-live="polite"><span>PORTFOLIO RUN / {String(activeIndex + 1).padStart(2, "0")} OF {String(flowItems.length).padStart(2, "0")}</span><strong>{activeItem.label}</strong><div className="flow-hud-track"><i style={{ width: `${runProgress}%` }} /></div><small>{Math.round(runProgress)}% chapter sync</small></div>
       <aside className="flow-nav" aria-label="Portfolio sections">
         {flowItems.map((item, index) => (
           <a className={activeId === item.id ? "active" : ""} href={`#${item.id}`} key={item.id} aria-label={`Go to ${item.label}`} aria-current={activeId === item.id ? "location" : undefined}>
@@ -616,23 +686,8 @@ function App() {
             <p className="lead">Master of Computer Science graduate specialising in AI, with 10 years in biotech and nutrition R&amp;D. I build auditable full-stack tools and applied AI systems across optimisation, document extraction, data, computer vision and operational workflows.</p>
             <div className="hero-actions">
               <a className="button primary" href="#work"><TerminalSquare size={17} /> Explore the work <ArrowRight size={16} /></a>
-              <a className="button" href={resumeUrl} target="_blank" rel="noreferrer"><FileDown size={17} /> Resume</a>
               <a className="button" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer"><GitBranch size={17} /> GitHub</a>
-            </div>
-          </div>
-
-          <div className="hero-console" aria-label="Interactive portfolio system preview">
-            <div className="console-topbar"><span /><span /><span /><strong>portfolio.systems</strong><span className="console-live"><i /> live view</span></div>
-            <div className="console-body">
-              <div className="console-heading"><div><span className="console-kicker">System overview</span><h2>From input to decision</h2></div><Zap size={19} /></div>
-              <div className="console-flow">
-                <div className="console-card blue"><span>01</span><strong>Collect</strong><small>files / data / rules</small></div>
-                <div className="console-connector" />
-                <div className="console-card teal"><span>02</span><strong>Reason</strong><small>AI + deterministic tools</small></div>
-                <div className="console-connector" />
-                <div className="console-card gold"><span>03</span><strong>Review</strong><small>evidence / approval</small></div>
-              </div>
-              <div className="console-log"><p><span className="log-prompt">$</span> portfolio --show-strengths</p><p><Check size={13} /> APIs + data models</p><p><Check size={13} /> RAG + tool workflows</p><p><Check size={13} /> regulated domain context</p></div>
+              <span className="resume-note">Resume available on request</span>
             </div>
           </div>
         </div>
@@ -650,16 +705,16 @@ function App() {
       <section className="section flow-section intro-section" id="positioning">
         <div className="section-rail"><span>01</span><span>POSITIONING</span></div>
         <div className="section-content intro-content">
-          <div className="section-heading"><Sparkles size={19} /><h2>Applied software for technical workflows.</h2></div>
-          <p className="section-lede">My strongest profile is not a generic chatbot demo. It is the combination of computer science training and real experience with regulated product work: messy inputs, specification rules, traceability, validation, stakeholder decisions and human approval.</p>
-          <div className="principle-row"><span>01 / Make the data explicit</span><span>02 / Keep actions controlled</span><span>03 / Make the result reviewable</span></div>
+          <div className="section-heading"><Sparkles size={19} /><h2>Complex workflows become clear systems.</h2></div>
+          <p className="section-lede">I start with the parts of work that are difficult to see: messy inputs, specification rules, traceability, validation and decisions that need human approval. Then I turn them into software that can be inspected, tested and improved.</p>
+          <MissionBrief />
         </div>
       </section>
 
       <section className="section flow-section work-section" id="work">
         <div className="section-rail"><span>02</span><span>SELECTED BUILDS</span></div>
         <div className="section-content">
-          <div className="work-heading"><div><div className="section-heading"><Layers3 size={19} /><h2>Build log</h2></div><p>Explore the systems, then open the evidence behind each one.</p></div><span className="count-label">{visibleProjects.length.toString().padStart(2, "0")} projects shown</span></div>
+          <div className="work-heading"><div><div className="section-heading"><Layers3 size={19} /><h2>Project missions</h2></div><p>Choose a build, trace the system and inspect the engineering decisions behind it.</p></div><span className="count-label">{visibleProjects.length.toString().padStart(2, "0")} missions online</span></div>
           <div className="filter-bar" role="toolbar" aria-label="Filter projects"><Filter size={16} />{filters.map((filter) => <button className={activeFilter === filter ? "active" : ""} type="button" key={filter} onClick={() => setActiveFilter(filter)}>{filter}</button>)}</div>
           <ProjectMissionRoom project={missionProject} />
           <div className="project-grid">
@@ -671,8 +726,8 @@ function App() {
       <section className="section flow-section architecture-section" id="architecture">
         <div className="section-rail"><span>03</span><span>HOW I THINK</span></div>
         <div className="section-content">
-          <div className="section-heading"><Network size={19} /><h2>System boundary, made visible.</h2></div>
-          <p className="section-lede">Across my projects, I use a consistent pattern: structure the inputs, make the intelligence useful, constrain actions and leave a clear path for review.</p>
+          <div className="section-heading"><Network size={19} /><h2>The control room.</h2></div>
+          <p className="section-lede">The same design question appears across my projects: where should language reasoning help, where should deterministic code decide, and where should a person review the result?</p>
           <ArchitectureMap />
         </div>
       </section>
@@ -680,8 +735,8 @@ function App() {
       <section className="section flow-section playground-section" id="playground">
         <div className="section-rail"><span>04</span><span>INTERACTIVE WALKTHROUGH</span></div>
         <div className="section-content">
-          <div className="section-heading"><Zap size={19} /><h2>Choose a system. Trace the decision.</h2></div>
-          <p className="section-lede">A small interactive view of how I separate language reasoning, deterministic tools and human review across three portfolio systems.</p>
+          <div className="section-heading"><Zap size={19} /><h2>Run the decision loop.</h2></div>
+          <p className="section-lede">Switch between three systems and follow the state as it moves from input to evidence, action and review.</p>
           <SystemsPlayground />
         </div>
       </section>
@@ -689,7 +744,7 @@ function App() {
       <section className="section flow-section capabilities-section" id="skills">
         <div className="section-rail"><span>05</span><span>CAPABILITIES</span></div>
         <div className="section-content capabilities-layout">
-          <div><div className="section-heading"><Code2 size={19} /><h2>Tools I can work with.</h2></div><p className="section-lede">A working portfolio across software engineering, AI applications, data systems, automation and applied security.</p></div>
+          <div><div className="section-heading"><Code2 size={19} /><h2>Skill tree / evidence unlocked.</h2></div><p className="section-lede">Each branch points back to a project, a tested workflow or professional exposure. The level is deliberately evidence-based.</p></div>
           <div className="capabilities-explorer"><SkillTree /><div className="capability-grid">{capabilities.map((group) => <div className="capability-card" key={group.label}><div className="capability-title">{group.icon}<h3>{group.label}</h3></div><div className="pill-list">{group.items.map((item) => <span key={item}>{item}</span>)}</div></div>)}</div></div>
         </div>
       </section>
@@ -697,7 +752,7 @@ function App() {
       <section className="section flow-section story-section" id="context">
         <div className="section-rail"><span>06</span><span>DOMAIN CONTEXT</span></div>
         <div className="section-content story-layout">
-          <div><div className="section-heading"><BriefcaseBusiness size={19} /><h2>Why this background matters.</h2></div><p className="section-lede">I bring software skills into problems I already understand: product R&D, manufacturing data, regulated documentation, quality systems and decisions that need evidence.</p></div>
+          <div><div className="section-heading"><BriefcaseBusiness size={19} /><h2>The bridge from domain to software.</h2></div><p className="section-lede">Ten years in biotech product R&amp;D and manufacturing gave me the problem context. Computer science gave me the tools to model, automate and build new interfaces around it.</p></div>
           <TransitionTimeline />
         </div>
       </section>
@@ -705,13 +760,13 @@ function App() {
       <section className="section flow-section proof-section" id="style">
         <div className="section-rail"><span>07</span><span>WORKING STYLE</span></div>
         <div className="section-content proof-layout">
-          <div className="proof-copy"><div className="section-heading"><BookOpenCheck size={19} /><h2>What I bring to a team.</h2></div><p className="section-lede">I am early in commercial software engineering, but not early in ownership, structured problem-solving or working with consequences.</p></div>
-          <div className="proof-list">{proofPoints.map((point, index) => <div key={point}><strong>{String(index + 1).padStart(2, "0")}</strong><span>{point}</span></div>)}</div>
+          <div className="proof-copy"><div className="section-heading"><BookOpenCheck size={19} /><h2>Quest log / operating loop.</h2></div><p className="section-lede">I am building my commercial software career, but I already know how to own ambiguous work, test assumptions and communicate decisions when the outcome matters. Select the signals you want to inspect.</p></div>
+          <QuestLog />
         </div>
       </section>
 
       <section className="section contact-section" id="contact">
-        <div className="contact-panel"><div><span className="console-kicker">Next conversation</span><h2>Let us talk about the workflow behind the software.</h2><p>Open to software engineering, AI software engineering, Python backend, full-stack product, data systems, automation and applied AI roles.</p></div><div className="contact-actions"><a className="button primary" href="mailto:charlieqi2017@gmail.com"><Mail size={17} /> Email me</a><button className="button" type="button" onClick={copyEmail}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "Copied" : "Copy email"}</button><a className="button" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer"><GitBranch size={17} /> GitHub</a><a className="button" href={resumeUrl} target="_blank" rel="noreferrer"><FileDown size={17} /> Resume</a></div></div>
+        <div className="contact-panel"><div><span className="console-kicker">Next conversation</span><h2>Let us talk about the workflow behind the software.</h2><p>Open to software engineering, AI software engineering, Python backend, full-stack product, data systems, automation and applied AI roles.</p></div><div className="contact-actions"><a className="button primary" href="mailto:charlieqi2017@gmail.com"><Mail size={17} /> Email me</a><button className="button" type="button" onClick={copyEmail}>{copied ? <Check size={17} /> : <Copy size={17} />}{copied ? "Copied" : "Copy email"}</button><a className="button" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer"><GitBranch size={17} /> GitHub</a><span className="resume-note">Resume available on request</span></div></div>
       </section>
     </main>
   );
@@ -720,4 +775,4 @@ function App() {
 const rootElement = document.getElementById("root");
 const root = rootElement.__charlieQiRoot ?? createRoot(rootElement);
 rootElement.__charlieQiRoot = root;
-root.render(<App />);
+root.render(<ReferenceDeck />);

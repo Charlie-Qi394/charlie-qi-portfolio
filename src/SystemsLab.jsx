@@ -69,10 +69,11 @@ function SystemsLab() {
   useEffect(() => {
     const host = canvasHostRef.current;
     if (!host) return undefined;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0c1822);
-    scene.fog = new THREE.Fog(0x0c1822, 17, 46);
+    scene.background = new THREE.Color(0x071522);
+    scene.fog = new THREE.Fog(0x071522, 17, 46);
 
     const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
     camera.position.set(0, 10.5, 18);
@@ -85,22 +86,22 @@ function SystemsLab() {
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     host.appendChild(renderer.domElement);
 
-    const ambient = new THREE.HemisphereLight(0xbdd8e3, 0x0a1219, 1.8);
+    const ambient = new THREE.HemisphereLight(0xb7e7ec, 0x06111c, 1.8);
     scene.add(ambient);
-    const keyLight = new THREE.DirectionalLight(0x8ec5e4, 2.4);
+    const keyLight = new THREE.DirectionalLight(0xdefcff, 3.2);
     keyLight.position.set(-8, 16, 8);
     keyLight.castShadow = true;
     scene.add(keyLight);
 
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(70, 70),
-      new THREE.MeshStandardMaterial({ color: 0x102733, roughness: 0.86, metalness: 0.1 }),
+      new THREE.MeshStandardMaterial({ color: 0x0b2130, roughness: 0.86, metalness: 0.08 }),
     );
     floor.rotation.x = -Math.PI / 2;
     floor.receiveShadow = true;
     scene.add(floor);
 
-    const grid = new THREE.GridHelper(70, 35, 0x2b5062, 0x1b3b4a);
+    const grid = new THREE.GridHelper(70, 35, 0x3b91a0, 0x173344);
     grid.position.y = 0.025;
     scene.add(grid);
 
@@ -114,7 +115,7 @@ function SystemsLab() {
       [0, -5.8],
     ];
 
-    const connectionMaterial = new THREE.LineBasicMaterial({ color: 0x386174, transparent: true, opacity: 0.62 });
+    const connectionMaterial = new THREE.LineBasicMaterial({ color: 0x67cbd2, transparent: true, opacity: 0.62 });
     const connectionPoints = positions.map(([x, z]) => new THREE.Vector3(x, 0.14, z));
     const connectionLine = new THREE.Line(
       new THREE.BufferGeometry().setFromPoints([...connectionPoints, connectionPoints[0]]),
@@ -131,7 +132,7 @@ function SystemsLab() {
       const color = new THREE.Color(station.color);
       const base = new THREE.Mesh(
         new THREE.CylinderGeometry(1.35, 1.55, 0.34, 6),
-        new THREE.MeshStandardMaterial({ color: 0x1a3545, metalness: 0.55, roughness: 0.4 }),
+        new THREE.MeshStandardMaterial({ color: 0x173344, metalness: 0.3, roughness: 0.4 }),
       );
       base.position.y = 0.18;
       base.castShadow = true;
@@ -141,7 +142,7 @@ function SystemsLab() {
 
       const tower = new THREE.Mesh(
         new THREE.BoxGeometry(0.8, 1.9, 0.8),
-        new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.14, metalness: 0.45, roughness: 0.35 }),
+        new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.025, metalness: 0.12, roughness: 0.34 }),
       );
       tower.position.y = 1.1;
       tower.rotation.y = Math.PI / 4;
@@ -160,7 +161,7 @@ function SystemsLab() {
       group.add(ring);
       stationMeshes.push(ring);
 
-      const beacon = new THREE.PointLight(color, 0.85, 5.5, 2);
+      const beacon = new THREE.PointLight(color, 0.3, 4.5, 2);
       beacon.position.y = 1.9;
       group.add(beacon);
 
@@ -171,14 +172,14 @@ function SystemsLab() {
     const rover = new THREE.Group();
     const roverBody = new THREE.Mesh(
       new THREE.BoxGeometry(0.9, 0.42, 1.25),
-      new THREE.MeshStandardMaterial({ color: 0xe9f3f6, metalness: 0.7, roughness: 0.24 }),
+      new THREE.MeshStandardMaterial({ color: 0xcdeff0, metalness: 0.42, roughness: 0.22 }),
     );
     roverBody.position.y = 0.7;
     roverBody.castShadow = true;
     rover.add(roverBody);
     const roverCore = new THREE.Mesh(
       new THREE.SphereGeometry(0.26, 16, 12),
-      new THREE.MeshStandardMaterial({ color: 0x36b8ad, emissive: 0x36b8ad, emissiveIntensity: 0.7 }),
+      new THREE.MeshStandardMaterial({ color: 0x36b8ad, emissive: 0x36b8ad, emissiveIntensity: 0.35 }),
     );
     roverCore.position.y = 1.02;
     rover.add(roverCore);
@@ -234,21 +235,23 @@ function SystemsLab() {
       if (keys.has("arrowup") || keys.has("w")) moveZ -= 1;
       if (keys.has("arrowdown") || keys.has("s")) moveZ += 1;
       const magnitude = Math.hypot(moveX, moveZ) || 1;
-      if (moveX || moveZ) {
+      if (!reduceMotion && (moveX || moveZ)) {
         rover.position.x = THREE.MathUtils.clamp(rover.position.x + (moveX / magnitude) * speed * delta, -11, 11);
         rover.position.z = THREE.MathUtils.clamp(rover.position.z + (moveZ / magnitude) * speed * delta, -8, 8);
         rover.rotation.y = Math.atan2(moveX, moveZ);
       }
 
-      roverCore.position.y = 1.02 + Math.sin(elapsed * 4) * 0.035;
-      roverRing.rotation.z = elapsed * 0.55;
+      if (!reduceMotion) {
+        roverCore.position.y = 1.02 + Math.sin(elapsed * 4) * 0.035;
+        roverRing.rotation.z = elapsed * 0.55;
+      }
       stationGroups.forEach(({ group, ring, tower }) => {
         const stationId = group.userData.stationId;
         const isActive = stationId === selectedRef.current || stationId === hoveredRef.current;
-        const pulse = isActive ? 1 + Math.sin(elapsed * 4) * 0.05 : 1;
+        const pulse = reduceMotion ? 1 : isActive ? 1 + Math.sin(elapsed * 4) * 0.05 : 1;
         ring.scale.setScalar(pulse);
-        tower.rotation.y += isActive ? 0.006 : 0.002;
-        group.position.y = isActive ? Math.sin(elapsed * 3) * 0.045 : 0;
+        if (!reduceMotion) tower.rotation.y += isActive ? 0.006 : 0.002;
+        group.position.y = reduceMotion ? 0 : isActive ? Math.sin(elapsed * 3) * 0.045 : 0;
       });
 
       const targetCameraX = rover.position.x * 0.18;
@@ -287,8 +290,12 @@ function SystemsLab() {
       <div className="lab-canvas" ref={canvasHostRef} aria-hidden="true" />
       <div className="lab-scanline" aria-hidden="true" />
       <div className="lab-nav">
-        <a className="lab-brand" href="#top"><span>CQ</span> Charlie Qi / AI Systems Lab</a>
-        <a className="lab-normal-link" href="#work">Skip 3D view <ArrowRight size={15} /></a>
+        <a className="lab-brand" href="#lab"><span>CQ</span> Charlie Qi / AI Systems Lab</a>
+        <a className="lab-normal-link" href="#projects">Skip 3D view <ArrowRight size={15} /></a>
+      </div>
+      <div className="lab-profile-card" aria-label="Charlie Qi profile">
+        <img src={`${import.meta.env.BASE_URL}profile-photo.jpeg`} alt="Charlie Qi" />
+        <span><strong>Charlie Qi</strong><small>Applied AI systems · software engineering</small></span>
       </div>
       <div className="lab-intro">
         <span className="console-kicker">Interactive portfolio / 2026</span>
@@ -306,7 +313,7 @@ function SystemsLab() {
         <div className="lab-output"><span>System output</span><strong>{selected.output}</strong></div>
         <a className="lab-open-link" href={selected.href} target={selected.href.startsWith("http") ? "_blank" : undefined} rel={selected.href.startsWith("http") ? "noreferrer" : undefined}>Open project <ArrowUpRight size={15} /></a>
       </div>
-      <a className="lab-scroll" href="#positioning"><ChevronDown size={17} /> Continue through portfolio</a>
+      <a className="lab-scroll" href="#projects"><ChevronDown size={17} /> Continue through portfolio</a>
       <button className="lab-reset" type="button" onClick={() => window.location.reload()} title="Reset the scene"><RotateCcw size={14} /> Reset</button>
     </section>
   );
