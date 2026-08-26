@@ -1046,6 +1046,96 @@
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.site-project-index {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, 1280px);
+  margin: 0 auto clamp(34px, 5vw, 64px);
+}
+
+.site-project-card {
+  display: grid;
+  gap: 11px;
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid var(--site-line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 12px 28px rgba(20, 38, 61, 0.06);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 650ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.site-project-card.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.site-project-card:hover {
+  border-color: #8bbfc5;
+  box-shadow: 0 18px 36px rgba(20, 38, 61, 0.12);
+  transform: translateY(-3px);
+}
+
+.site-project-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #087a87;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.site-project-card-top a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #087a87;
+  letter-spacing: 0.04em;
+  transition: color 180ms ease;
+}
+
+.site-project-card-top a:hover,
+.site-project-card-top a:focus-visible {
+  color: #14263d;
+  outline: none;
+}
+
+.site-project-card h3 {
+  margin: 0;
+  color: var(--site-ink);
+  font-size: clamp(20px, 2vw, 28px);
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.site-project-stack {
+  margin: 0;
+  color: #087a87;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.site-project-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--site-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.site-project-card li::marker {
+  color: #45bfc8;
+}
+
 .site-chapter-grid .site-chapter:last-child {
   grid-column: 1 / -1;
   width: min(100%, 860px);
@@ -1179,6 +1269,10 @@
     grid-template-columns: 1fr;
   }
 
+  .site-project-index {
+    grid-template-columns: 1fr;
+  }
+
   .site-chapter-grid .site-chapter:last-child {
     width: 100%;
   }
@@ -1190,6 +1284,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .site-chapter,
+  .site-project-card,
   .site-section-heading,
   .site-contact .contact-card {
     opacity: 1;
