@@ -18,6 +18,16 @@ const chapters = [
 
 const portfolioProjects = [
   {
+    number: "NEW",
+    title: "Charlie Job Application OS",
+    stack: "React · TypeScript · Express · SQLite · Playwright",
+    href: "https://github.com/Charlie-Qi394/charlie-job-application-os",
+    bullets: [
+      "Built a local-first job discovery product with public ATS feeds, a swipeable recommendation deck, persistent pass/like decisions and automatic selection of an existing résumé.",
+      "Implemented immutable application snapshots and browser assistance for supported fields, with human review and manual submission. Validated with 41 automated tests.",
+    ],
+  },
+  {
     number: "01",
     title: "Integrated Nutrition Formulation Optimisation Platform",
     stack: "React · TypeScript · FastAPI · PostgreSQL · SciPy/HiGHS · Gemini",
@@ -177,8 +187,8 @@ function ReferenceDeck() {
       <section className="site-section site-section-projects" id="projects" aria-labelledby="projects-title">
         <div className="site-section-heading site-reveal">
           <span className="site-kicker">01 / FEATURED PROJECTS</span>
-          <h2 id="projects-title">Six systems, one practical direction.</h2>
-          <p>Explore the projects in the same order as my resume, from domain software and agent tooling through RAG, computer vision, applied security and NLP.</p>
+          <h2 id="projects-title">Seven systems, one practical direction.</h2>
+          <p>Explore my latest product alongside scientific software, agent tooling, RAG, computer vision, applied security and NLP.</p>
         </div>
         <div className="site-project-index">
           {portfolioProjects.map((project) => (
@@ -226,7 +236,7 @@ function ReferenceDeck() {
             <a className="contact-button primary" href="mailto:charlieqi2017@gmail.com"><Mail size={17} /> [ Email me ]</a>
             <button className="contact-button" type="button" onClick={copyEmail}>{copied ? <Check size={17} /> : <Copy size={17} />} [ {copied ? "Copied" : "Copy email"} ]</button>
             <a className="contact-button" href="https://github.com/Charlie-Qi394" target="_blank" rel="noreferrer"><GitBranch size={17} /> [ GitHub ]</a>
-            <span className="contact-note">Resume available on request</span>
+            <span className="contact-note">Résumé available on request</span>
           </div>
         </div>
       </section>
