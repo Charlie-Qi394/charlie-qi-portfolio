@@ -1,45 +1,24 @@
-# Charlie Qi Portfolio Website
+# Charlie Qi — Living Systems
 
-Personal portfolio for software engineering, AI software engineering, Python backend, data systems, automation and applied AI roles.
+Personal portfolio combining applied AI engineering with biotech and nutrition R&D context.
 
-## Tech Stack
+[Visit the live portfolio](https://charlie-qi394.github.io/charlie-qi-portfolio/)
 
-- React
-- Vite
-- Three.js
-- CSS
-- lucide-react
-- Optimised JPEG page assets from the supplied portfolio deck
+## Experience
 
-## Portfolio Experience
+- Formulation Optimisation Platform is the flagship, with an illustrative interactive mass-balance preview.
+- Seven project repositories, expandable engineering details and a supporting Job Application OS recommendation-deck demo.
+- Original molecular artwork, responsive layout, keyboard-accessible controls and light/dark themes.
+- Résumé available on request only. No résumé downloads or private application data are included.
 
-- A normal recruiter-facing website with sticky navigation and sections for Home, Projects, Architecture, Experience and Contact.
-- The supplied chapter wording, diagrams, typography, color system and graphics are preserved as visual case-study exhibits.
-- Full-viewport interactive 3D opening scene with clickable stations, animated depth, keyboard movement and project links.
-- A normal recruiter-facing website follows the 3D entry point, with sticky navigation and sections for Home, Projects, Architecture, Experience and Contact.
-- Scroll-triggered chapter reveals, hover depth, pointer parallax and reduced-motion support.
-- An interactive contact section with email, copy-email, GitHub and resume-on-request states.
-- Responsive layouts for desktop and mobile screens.
+## Development
 
-## Run Locally
-
-```bash
-npm install
+```sh
+npm ci
 npm run dev
-```
-
-Open the local URL shown by Vite.
-
-## Build
-
-```bash
 npm run build
 ```
 
-## Notes
+React + Vite, Inter fonts bundled locally, Lucide icons. GitHub Actions deploys `dist` to GitHub Pages on pushes to main. `design-qa.md` records visual and interaction validation; local screenshots stay in gitignored `qa/`.
 
-The website does not publish a resume download. Resume available on request.
-
-The source chapter artwork is stored in `public/reference-deck/` as twelve optimised page images so the website remains visually faithful to the supplied PDF while presenting the material in normal website sections.
-
-The site is configured for GitHub Pages at `/charlie-qi-portfolio/` through `vite.config.js`.
+The scientific artwork is decorative. The mass-balance and job demos use illustrative inputs and run entirely in the browser. They do not access the private job application app or submit applications.
