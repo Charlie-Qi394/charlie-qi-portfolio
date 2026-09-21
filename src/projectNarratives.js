@@ -44,6 +44,17 @@ export const projectNarratives = [
     questions: ["Which files enter the local prompt?", "How much memory does each model need?", "Where does the editor still have separate cloud behavior?"],
   },
   {
+    title: "JevRouter Prompt Tier Extension",
+    filter: "AI systems",
+    label: "Decision routing",
+    summary: "A Chrome extension that turns a prompt into a reviewable model-capability recommendation without silently changing the user's selected model.",
+    stack: "JavaScript · Chrome MV3 · TypeSafe Jev · Choice decisions · Confidence gating",
+    build: "I separated pure routing logic from the Manifest V3 service worker and content UI. Local rules are available without an API, while an optional Jev call asks one closed-set Choice question. Responses are validated against the documented answer shape, confidence below 0.60 becomes manual review, and failed calls fall back visibly rather than pretending Jev succeeded.",
+    proof: "Seven deterministic unit scenarios cover tier rules, request shape, response parsing, uncertainty and invalid inputs. I also loaded the unpacked extension in Chromium and exercised both the popup and injected prompt panel. I removed unsupported token-saving claims and automatic model clicks because provider interfaces and pricing change, and the extension cannot independently verify those outcomes.",
+    href: "https://github.com/Charlie-Qi394/jevrouter-prompt-tier-extension",
+    questions: ["When should software trust a routing decision?", "What happens when Jev is uncertain or unavailable?", "Which data leaves the browser?"],
+  },
+  {
     title: "FridgePeace Shared-Household Food Management PWA",
     filter: "Product software",
     label: "Product build",

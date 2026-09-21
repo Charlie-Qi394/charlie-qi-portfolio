@@ -51,6 +51,16 @@ export const portfolioProjects = [
   },
   {
     number: "05",
+    title: "JevRouter Prompt Tier Extension",
+    stack: "JavaScript · Chrome MV3 · TypeSafe Jev · Confidence gating",
+    href: "https://github.com/Charlie-Qi394/jevrouter-prompt-tier-extension",
+    bullets: [
+      "Built a Manifest V3 extension that reviews prompts on ChatGPT, Claude and Gemini and recommends a lightweight, standard, frontier or manual-review capability tier.",
+      "Implemented explicit user-triggered analysis, optional Jev Choice decisions, a 0.60 confidence review gate, transparent local fallback rules, seven unit scenarios and browser smoke tests.",
+    ],
+  },
+  {
+    number: "06",
     title: "Computer Vision Algorithms and Deep Learning",
     stack: "TensorFlow/Keras · CNNs · Semantic segmentation",
     href: "https://github.com/Charlie-Qi394/computer-vision-cnn-segmentation",
@@ -60,7 +70,7 @@ export const portfolioProjects = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     title: "Python PKI Certificate System",
     stack: "Python · cryptography · X.509",
     href: "https://github.com/Charlie-Qi394/pki-certificate-system-python",
@@ -69,7 +79,7 @@ export const portfolioProjects = [
     ],
   },
   {
-    number: "07",
+    number: "08",
     title: "Seq2Seq Recipe Generation with Attention",
     stack: "NLP · PyTorch",
     href: "https://github.com/Charlie-Qi394/seq2seq-recipe-generation-nlp",
