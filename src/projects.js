@@ -41,6 +41,16 @@ export const portfolioProjects = [
   },
   {
     number: "04",
+    title: "Local LLM Coding Assistant",
+    stack: "Python · Ollama · Qwen3.5 9B · Gemma 4 12B · Continue",
+    href: "https://github.com/Charlie-Qi394/local-llm-coding-assistant",
+    bullets: [
+      "Configured two Q4_K_M open-weight models for local coding assistance on an Apple M4 Pro, with terminal chat, selected-file context and editor integration.",
+      "Bound Ollama to loopback, disabled its cloud features and capped context and concurrency; documented single-run memory and throughput observations without presenting them as a model benchmark.",
+    ],
+  },
+  {
+    number: "05",
     title: "Computer Vision Algorithms and Deep Learning",
     stack: "TensorFlow/Keras · CNNs · Semantic segmentation",
     href: "https://github.com/Charlie-Qi394/computer-vision-cnn-segmentation",
@@ -50,7 +60,7 @@ export const portfolioProjects = [
     ],
   },
   {
-    number: "05",
+    number: "06",
     title: "Python PKI Certificate System",
     stack: "Python · cryptography · X.509",
     href: "https://github.com/Charlie-Qi394/pki-certificate-system-python",
@@ -59,7 +69,7 @@ export const portfolioProjects = [
     ],
   },
   {
-    number: "06",
+    number: "07",
     title: "Seq2Seq Recipe Generation with Attention",
     stack: "NLP · PyTorch",
     href: "https://github.com/Charlie-Qi394/seq2seq-recipe-generation-nlp",

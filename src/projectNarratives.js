@@ -33,6 +33,17 @@ export const projectNarratives = [
     questions: ["Is the evidence sufficient?", "Can the answer be traced to sources?", "How do I evaluate retrieval and faithfulness?"],
   },
   {
+    title: "Local LLM Coding Assistant",
+    filter: "AI systems",
+    label: "On-device inference",
+    summary: "A local-first coding workflow using Qwen3.5 9B and Gemma 4 12B through Ollama, with explicit file selection and editor integration.",
+    stack: "Python · Ollama · Qwen3.5 9B · Gemma 4 12B · Q4_K_M · Continue",
+    build: "I configured two Q4_K_M model variants on an Apple M4 Pro, created a small Qwen-based coding profile, and wrote a Python helper that sends only named UTF-8 files to Ollama's loopback API. A launch script disables Ollama Cloud and limits loaded models and parallel requests. Continue connects the same local endpoint to selected code context in the editor.",
+    proof: "The design trades cloud-model dependence for local memory use and model-loading delays. Single short-prompt smoke tests reported 5.8 GB loaded memory and about 33.9 generated tokens/s for Qwen, versus 8.1 GB and 26.5 tokens/s for Gemma. Those prompts differed, so these are setup observations, not a fair model comparison. I did not build a custom quantizer, tune the KV cache directly, or train either model.",
+    href: "https://github.com/Charlie-Qi394/local-llm-coding-assistant",
+    questions: ["Which files enter the local prompt?", "How much memory does each model need?", "Where does the editor still have separate cloud behavior?"],
+  },
+  {
     title: "FridgePeace Shared-Household Food Management PWA",
     filter: "Product software",
     label: "Product build",
