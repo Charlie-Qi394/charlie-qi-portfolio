@@ -94,7 +94,8 @@ export const portfolioProjects = [
     href: "https://github.com/Charlie-Qi394/charlie-qi-portfolio/tree/main/public/projects/formulation-supply-planner",
     bullets: [
       "Built two independent inventory-constrained workflows for formulation feasibility and least-cost planning, with ingredient-demand forecasts for production volume in MT.",
-      "Compare original and optimised ingredient usage, savings per MT and total savings; retain five scenario snapshots. Public demo uses fictional data and manually entered stock.",
+      "Compare original and optimised ingredient usage, savings per MT and total savings; retain five scenario snapshots. Public showcase is anonymised; the workbook and formulation details are not distributed.",
     ],
   },
 ];
+

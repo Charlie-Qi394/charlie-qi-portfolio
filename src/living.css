@@ -27,3 +27,20 @@
 .planner-boundary h3{font-size:18px;font-weight:500}
 .light .planner-preview{background:#dce6d7;border-color:#b1c3ae}
 @media(max-width:700px){.planner-download{align-items:stretch;flex-direction:column;gap:15px}.planner-boundary{grid-template-columns:1fr;gap:20px}.project-switch{flex-wrap:wrap}.planner-preview{padding:20px}}
+.planner-private-preview{background:#101c27;border:1px solid #386174;border-radius:12px;padding:24px;margin:30px 0;color:#eaf0f5}
+.planner-preview-tabs{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.planner-preview-tabs button{border:1px solid #426276;border-radius:6px;padding:12px 16px;background:#172b3a;color:#eaf0f5;cursor:pointer}
+.planner-preview-tabs button[aria-pressed=true]{border-color:#64d5df;background:#254956}
+.planner-preview-heading{display:flex;gap:16px;justify-content:space-between;align-items:center}
+.planner-preview-heading h3{font-size:23px}.planner-preview-heading>span{font-size:10px;letter-spacing:1px;color:#d6bd71}
+.planner-redacted-inputs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.planner-redacted-inputs span{display:block;font-size:12px;color:#bfccd5}.planner-redacted-inputs strong{display:block;margin-top:8px;background:#243546;padding:12px;font-size:14px;color:#d0d7df}
+.planner-preview-calculate{border:1px solid #68dae6;border-radius:8px;background:linear-gradient(#325e72,#1b394d);box-shadow:0 4px 0 #081623;padding:14px 20px;color:#fff;font-weight:600;cursor:pointer}
+.planner-preview-calculate:focus-visible,.planner-preview-tabs button:focus-visible{outline:3px solid #f3d173;outline-offset:4px}
+.planner-preview-status,.planner-redacted-results>p{font-size:13px;line-height:1.7;color:#bfccd5;margin-top:22px}
+.planner-redacted-results table{width:100%;border-collapse:collapse;font-size:13px;margin:24px 0}
+.planner-redacted-results caption{text-align:left;color:#bfccd5;padding-bottom:12px}
+.planner-redacted-results th,.planner-redacted-results td{padding:14px 8px;text-align:left;border-bottom:1px solid #354d5d}
+@media(max-width:700px){.planner-private-preview{padding:16px}.planner-redacted-inputs{grid-template-columns:1fr}.planner-preview-heading{align-items:flex-start;flex-direction:column}.planner-redacted-results table{font-size:11px}}
+
+
