@@ -7,7 +7,8 @@ Personal portfolio combining applied AI engineering with biotech and nutrition R
 ## Experience
 
 - Formulation Optimisation Platform is the flagship, with an illustrative interactive mass-balance preview.
-- Seven project repositories, expandable engineering details and a supporting Job Application OS recommendation-deck demo.
+- Ten showcased projects, expandable engineering details and a supporting Job Application OS recommendation-deck demo.
+- Latest spotlight: [Formulation Cost Optimisation & Supply Chain Planner](public/projects/formulation-supply-planner), with a downloadable fictional-data Excel/VBA demo, independent inventory-constrained supply/cost workflows and five saved scenarios. Inventory is manually entered today; live feeds are a roadmap item.
 - Original molecular artwork, responsive layout, keyboard-accessible controls and light/dark themes.
 - Résumé available on request only. No résumé downloads or private application data are included.
 

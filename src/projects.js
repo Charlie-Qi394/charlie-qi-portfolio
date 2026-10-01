@@ -87,4 +87,14 @@ export const portfolioProjects = [
       "Built a PyTorch LSTM encoder-decoder recipe-generation system using ingredient lists as source sequences and recipe instructions as targets.",
     ],
   },
+  {
+    number: "NEW",
+    title: "Formulation Cost Optimisation & Supply Chain Planner",
+    stack: "Excel · VBA · Solver · Linear programming",
+    href: "https://github.com/Charlie-Qi394/charlie-qi-portfolio/tree/main/public/projects/formulation-supply-planner",
+    bullets: [
+      "Built two independent inventory-constrained workflows for formulation feasibility and least-cost planning, with ingredient-demand forecasts for production volume in MT.",
+      "Compare original and optimised ingredient usage, savings per MT and total savings; retain five scenario snapshots. Public demo uses fictional data and manually entered stock.",
+    ],
+  },
 ];

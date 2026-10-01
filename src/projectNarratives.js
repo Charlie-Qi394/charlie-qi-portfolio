@@ -1,5 +1,16 @@
 export const projectNarratives = [
   {
+    title: "Formulation Cost Optimisation & Supply Chain Planner",
+    filter: "Product software",
+    label: "Inventory-constrained optimisation",
+    summary: "An Excel/VBA planning tool that finds feasible or least-cost formulations within entered ingredient availability and nutritional constraints, then forecasts ingredient demand for planned production.",
+    stack: "Excel · VBA · Solver Simplex LP · Scenario snapshots",
+    build: "I separated supply feasibility from cost minimisation, gave each workflow independent inventory inputs, enforced ingredient and nutrient constraints, and added original/optimised usage, prominent savings and a compact five-scenario comparison.",
+    proof: "The public release uses fictional data and has been exercised in native Excel for stock limits, cost optimisation and scenario retention. It supports rapid replanning from entered availability, not a connected live-inventory feed.",
+    href: "https://github.com/Charlie-Qi394/charlie-qi-portfolio/tree/main/public/projects/formulation-supply-planner",
+    questions: ["How do stock constraints remain binding when cost is the objective?", "How do I preserve comparable scenarios without overcrowding the interface?", "What must be validated before connecting live inventory and stock movements?"],
+  },
+  {
     title: "Integrated Nutrition Formulation Optimisation Platform",
     filter: "Product software",
     label: "Domain software",
